@@ -45,6 +45,8 @@ class ElectronicsView(View):
         if request.method == 'GET':
             paginator = Paginator(items, 2)
             pages = request.GET.get('page', 1)
+            self.process()
+
             try:
                 items = paginator.page(pages)
             except PageNotAnInteger:
@@ -52,6 +54,23 @@ class ElectronicsView(View):
             return render(request, 'store/list.html', {'items': items})
         elif request.method == 'POST':
             return HttpResponseNotFound("POST method is not allowed, dude")
+
+    def process(self):
+        print("\n*** We are processing Electronics ***\n")
+
+
+class ComputersView(ElectronicsView):
+    def process(self):
+        print("\n--- We are processing Computers ---\n")
+
+
+class MobileView:
+    def process(self):
+        print("\n### We are processing Mobile phones ###\n")
+
+
+class EquipmentView(MobileView, ComputersView):
+    pass
 
 
 class ElectronicsTemplateView(TemplateView):

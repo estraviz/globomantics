@@ -4,7 +4,8 @@ from . import views
 from .views import (
     ElectronicsView,
     ElectronicsTemplateView,
-    ElectronicsListView
+    ElectronicsListView,
+    EquipmentView
 )
 
 urlpatterns = [
@@ -14,6 +15,8 @@ urlpatterns = [
             view=views.electronics, name='electronics-function-view'),
     re_path(route=r'^electronics-class-view$',  view=ElectronicsView.as_view(),
             name='electronics-class-view'),
+    re_path(route=r'^electronics-mixins-view$',  view=EquipmentView.as_view(),
+            name='electronics-mixins-view'),
     re_path(route=r'^electronics-template-view$',
             view=ElectronicsTemplateView.as_view(),
             name='electronics-template-view'),
