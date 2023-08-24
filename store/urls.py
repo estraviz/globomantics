@@ -13,6 +13,8 @@ urlpatterns = [
     re_path(route=r'^\d+', view=views.detail, name='detail'),
     re_path(route=r'^electronics-function-view$',
             view=views.electronics, name='electronics-function-view'),
+    re_path(route=r'^logout$',
+            view=views.logout, name='logout'),
     re_path(route=r'^electronics-class-view$',  view=ElectronicsView.as_view(),
             name='electronics-class-view'),
     re_path(route=r'^electronics-mixins-view$',  view=EquipmentView.as_view(),

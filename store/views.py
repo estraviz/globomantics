@@ -18,6 +18,15 @@ def detail(request):
     return HttpResponse("Hello there, globomantics e-commerce store front detail pages coming here...")
 
 
+def logout(request):
+    try:
+        del request.session['customer']
+    except KeyError:
+        print("Error while logging out.")
+
+    return HttpResponse("You're logged out.")
+
+
 @csrf_exempt
 @cache_page(900)
 @require_http_methods(["GET"])
@@ -28,11 +37,16 @@ def electronics(request):
     if request.method == 'GET':
         paginator = Paginator(items, 2)
         pages = request.GET.get('page', 1)
+        name = "John Doe"
 
         try:
             items = paginator.page(pages)
         except PageNotAnInteger:
             items = paginator.page(1)
+
+        if not request.session.has_key('customer'):
+            request.session['customer'] = name
+            print("Setting session.")
 
         response = render(request, 'store/list.html', {'items': items})
 

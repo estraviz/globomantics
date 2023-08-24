@@ -72,6 +72,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'globomantics.wsgi.application'
 
 
+# # Cache
+
+# CACHES = {
+#    'default': {
+#        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+#        'LOCATION': '127.0.0.1:11211',
+#    }
+# }
+
+# SESSION_ENGINE = 'django.contrib.sessions.backends.cache'  # Cached sessions
+# # SESSION_ENGINE = 'django.contrib.sessions.backends.file'  # File based sessions
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
