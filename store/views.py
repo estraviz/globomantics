@@ -28,11 +28,24 @@ def electronics(request):
     if request.method == 'GET':
         paginator = Paginator(items, 2)
         pages = request.GET.get('page', 1)
+
         try:
             items = paginator.page(pages)
         except PageNotAnInteger:
             items = paginator.page(1)
-        return render(request, 'store/list.html', {'items': items})
+
+        response = render(request, 'store/list.html', {'items': items})
+
+        if request.COOKIES.get('visits'):
+            value = int(request.COOKIES.get('visits'))
+            print("Getting cookie.")
+            response.set_cookie('visits', value + 1)
+        else:
+            value = 1
+            print("Setting cookie.")
+            response.set_cookie('visits', value)
+
+        return response
     elif request.method == 'POST':
         return HttpResponseNotFound("POST method is not allowed, dude")
 
