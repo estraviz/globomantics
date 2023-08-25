@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,6 +19,7 @@
             </ul>
         {% endif %}
 
+        <h1>{% trans "Welcome to our site" %}</h1>
         <h1>Hello there, {{ request.session.customer }}. You have visited Globomantics store {{ request.COOKIES.visits|default:"1" }} times.</h1>
         <table class="table table-bordered">
             <thead>

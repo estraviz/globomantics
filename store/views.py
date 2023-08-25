@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.core.paginator import PageNotAnInteger, Paginator
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
+from django.utils.translation import gettext
 from django.views import View
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
@@ -39,8 +40,8 @@ def electronics(request):
         paginator = Paginator(items, 2)
         pages = request.GET.get('page', 1)
         name = "John Doe"
-
-        messages.info(request, 'Customer successfully fetched.')
+        message = gettext("Customer Successfully Fetched.")
+        messages.info(request, message)
 
         try:
             items = paginator.page(pages)
