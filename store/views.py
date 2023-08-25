@@ -11,9 +11,10 @@ from django.views.generic import ListView, TemplateView
 
 
 def index(request):
-    return HttpResponse(
-        "Hello there, globomantics e-commerce store front coming here..."
-    )
+    # return HttpResponse(
+    #     "Hello there, globomantics e-commerce store front coming here..."
+    # )  # debug_toolbar won't work if we don't return a response
+    return render(request, 'index.html')
 
 
 def detail(request):
