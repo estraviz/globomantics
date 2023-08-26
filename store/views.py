@@ -21,6 +21,10 @@ def detail(request):
     return HttpResponse("Hello there, globomantics e-commerce store front detail pages coming here...")
 
 
+def newitem(request):
+    return HttpResponse()
+
+
 def logout(request):
     try:
         del request.session['customer']

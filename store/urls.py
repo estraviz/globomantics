@@ -1,5 +1,7 @@
 from django.urls import path, re_path
 
+from .feeds import NewInventoryFeed
+
 from . import views
 from .views import (
     ElectronicsView,
@@ -10,6 +12,8 @@ from .views import (
 
 urlpatterns = [
     path(route='', view=views.index, name='index'),
+    path('feed', NewInventoryFeed()),
+    path('newitem', views.newitem, name='newitem'),
     re_path(route=r'^\d+', view=views.detail, name='detail'),
     re_path(route=r'^electronics-function-view$',
             view=views.electronics, name='electronics-function-view'),
