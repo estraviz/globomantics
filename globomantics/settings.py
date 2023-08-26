@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django.contrib.sitemaps',
 ]
 
 SITE_ID = 1
