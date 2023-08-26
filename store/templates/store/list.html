@@ -1,11 +1,12 @@
-{% load i18n %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Electronics Page</title>
     </head>
+
+    {% load i18n %}
+    {% load static %}
     <body>
         {% if messages %}
             <ul class="messages">
@@ -19,6 +20,7 @@
             </ul>
         {% endif %}
 
+        <img src="{% static 'globomantics.jpg' %}">
         <h1>{% trans "Welcome to our site" %}</h1>
         <h1>Hello there, {{ request.session.customer }}. You have visited Globomantics store {{ request.COOKIES.visits|default:"1" }} times.</h1>
         <table class="table table-bordered">

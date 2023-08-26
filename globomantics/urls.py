@@ -18,6 +18,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('store.urls')),
     path('store/', include('store.urls')),
+    path('store/(\d+)/', include('store.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('pages/', include('django.contrib.flatpages.urls')),
 ]
